@@ -7,7 +7,7 @@
   const STORAGE_ENABLED = "towerim_translate_enabled";
   const STORAGE_MODE = "towerim_translate_mode"; // "strict" | "relaxed"
   const STORAGE_ACTIVITY = "towerim_translate_activity_relaxed"; // boolean
-  const MONTHS_EN_SHORT = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  const MONTHS_EN_SHORT = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   let enabled = true;
   let mode = "strict";
   let activityRelaxed = true;
@@ -31,6 +31,7 @@
     "文件夹": "Folders",
     "讨论": "Discussions",
     " 条讨论": " discussions",
+    "条讨论": "discussions",
     "成员": "Members",
     "标签": "Tags",
     "优先级": "Priority",
@@ -63,6 +64,7 @@
     "导出为 Excel": "Export to Excel",
     "子任务以树状结构显示": "Show subtasks as tree structure",
     "复制链接": "Copy link",
+    "链接已复制": "Link copied",
     "排序": "Sort",
     "搜索": "Search",
     "更多": "More",
@@ -458,8 +460,16 @@
     "如何创建?": "How to create?",
     "调整项目模块": "Arrange project modules",
     "你可以拖动模块调整位置，隐藏的模块可随时恢复。": "Drag modules to adjust the order. Hidden modules can be restored anytime.",
+    "仅项目成员可以查看和编辑该项目": "Only project members can view and edit this project",
+    "在互联网上公开这个项目，所有人都可以查看, 但仅项目成员可以编辑此项目": "Make this project public on the internet, everyone can view it, but only project members can edit it",
+    "不显示再讨论中": "Not displayed in discussions", 
+    "自动添加到讨论": "Automatically add to discussions",
+    "其他主题的评论": "Comments on other topics",
+    "不显示在讨论中": "Not displayed in discussions",
     "管理项目成员": "Manage project members",
+    "设置团队内可以访问当前项目的成员。": "Set team members who can access the current project.",
     "管理标签": "Manage tags",
+    "设置当前项目可用的标签。": "Set tags available for the current project.",
     "标签管理": "Tag management",
     "项目标签": "Project tags",
     "新建项目标签": "Create project tag",
@@ -468,7 +478,7 @@
     "新建全局标签": "Create global tag",
     "可在所有项目内使用": "Available in all projects",
     "使用 webhooks，你可以在 企业微信 ， 钉钉 等工具上接收项目的最新动态。": "Use webhooks to receive project updates in WeCom, DingTalk and other tools.",
-    "添加Webhook": "Add Webhook",
+    "添加 webhook": "Add Webhook",
     "请填入第三方工具提供的 webhook 地址，点击创建后，我们将向其推送相应消息。": "Enter the webhook URL from the third-party tool. After creating, we will push messages to it.",
     "URL 地址": "URL address",
     "密钥（选填）": "Secret (optional)",
@@ -556,6 +566,8 @@
     "查看全部通知": "View all notifications",
     "全部标记为已读": "Mark all as read",
     "全部通知": "All notifications",
+    "未读通知在前": "Unread notifications first",
+    "默认时间排序": "Default time sorting",
 
     "申请加入团队": "Apply to join team",
     "加入申请": "Join request",
@@ -568,7 +580,7 @@
     "回到团队页面": "Go to team page",
     "权限": "Permission",
     "管理员": "Admin",
-    "参与的项目": "Participating projects", 
+    "参与的项目": "Participating projects",
     "已激活的项目": "Active projects",
     "输入项目名称": "Enter project name",
     "双保险状态": "Dual-insurance status",
@@ -752,33 +764,87 @@
     "问题": "question",
     "尚未": "not yet",
     "填写": "filled in",
+    "回答了问题": "answered the question",
+    "创建于": "Created on",
+    "在": "at",
+    "切换团队": "Switch team",
+    "创建新团队": "Create new team",
+    "微信扫码登录": "WeChat QRCode login",
+    "快捷登录": "Quick login",
+    "微信快捷登录": "WeChat quick login",
+    "下次自动登录": "Next time login automatically",
+    "手机号码": "Phone number",
+    "手机号": "Phone number",
+    "邮箱": "Email",
+    "没有账号？": "No account?",
+    "立即注册 →": "Register now →",
+    "其它登录方式": "Other login methods",
+    "使用其他头像、昵称或账号": "Use other avatar, nickname or account",
+    "飞书": "Feishu",
+    "企业微信": "WeWork",
+    "钉钉": "DingTalk",
+    "忘记密码了？": "Forgot password?",
+    "登录邮箱": "Login email",
+    "登录": "Login",
+    "短信验证码": "SMS verification code",
+    "发送验证码": "Send code",
+    "立刻扫码，开启您的 Tower 体验": "Scan QRCode to start your Tower experience",
+    "微信扫码": "Scan Wechat QRCode",
+    "关注公众号": "Follow WeChat Official Account",
+    "开始试用": "Start Using",
+    "已有账号？": "Already have an account?",
+    "直接登录 →": "Login now →",
+    "请填写登录邮箱": "Please fill in the login email",
+    "重新设置密码": "Reset password",
+    "发送重设密码地址": "Send reset password address",
+    "请输入团队名称*": "Please enter the team name*",
+    "请选择团队中需要协作的部门:": "Please select the departments that need to be collaborated with in the team:",
+    "产品": "Product",
+    "市场": "Marketing",
+    "运营": "Operation",
+    "客服": "CS",
+    "研发": "R&D",
+    "人事": "HR",
+    "其它": "Other",
+    "下一步": "Next",
+    "你有": "You have",
+    "条任务需要处理": " tasks need to be processed",
+    "条任务": " tasks",
+    "需要处理": " need to be processed",
+    "待办任务": "To-do tasks",
+    "还没有安排在今天的任务": "No tasks scheduled for today",
+    "输入知识库标题": "Enter knowledge base title",
+    "正在加载编辑器...": "Loading editor...",
+    "隐藏": "Hide",
+    "显示": "Show"
+    
   };
 
   const REGEX_RULES = [
-    { 
+    {
       pattern: /^(\d{4})\s*年\s*(\d{1,2})\s*月\s*(\d{1,2})\s*日$/,
-      replaceFn: (_m, y, mo, d) => `${MONTHS_EN_SHORT[parseInt(mo,10)-1]} ${String(d).padStart(2,'0')}, ${y}`
+      replaceFn: (_m, y, mo, d) => `${MONTHS_EN_SHORT[parseInt(mo, 10) - 1]} ${String(d).padStart(2, '0')}, ${y}`
     },
     {
       pattern: /^(\d{4})[\s\u3000]*年[\s\u3000]*第[\s\u3000]*(0?[1-9]|[1-4]\d|5[0-3])[\s\u3000]*[周週]$/,
-      replaceFn: (_m, y, w) => `Week ${parseInt(w,10)} of ${y}`
-    },  
+      replaceFn: (_m, y, w) => `Week ${parseInt(w, 10)} of ${y}`
+    },
     {
       // “在 15:43 回答了问题” → “Answered  question at 15:43”
       pattern: /^在[\s\u3000]*(\d{1,2}):(\d{2})[\s\u3000]*回答了问题$/,
-      replaceFn: (_m, hh, mm) => `Answered the question at ${String(hh).padStart(2,'0')}:${mm}`
+      replaceFn: (_m, hh, mm) => `Answered the question at ${String(hh).padStart(2, '0')}:${mm}`
     },
     {
       // “2025 年第 19 周” → “Week 19 of 2025”
       pattern: /^(\d{4})[\s\u3000]*年[\s\u3000]*第[\s\u3000]*(0?[1-9]|[1-4]\d|5[0-3])[\s\u3000]*[周週]$/,
-      replaceFn: (_m, y, w) => `Week ${parseInt(w,10)} of ${y}`
+      replaceFn: (_m, y, w) => `Week ${parseInt(w, 10)} of ${y}`
     },
     {
       // “项目：广告素材策划&设计” → “Project: 广告素材策划&设计”
       // 只替换开头的“项目：”，其余文本原样保留
       pattern: /^项目[\s\u3000]*[:：][\s\u3000]*/u,
       replace: "Project: "
-    },       
+    },
     {
       // “编辑了任务描述” → “Edited the task description”
       pattern: /^\s*编辑了任务描述\s*$/,
@@ -788,26 +854,47 @@
     {
       // 2024年7月5日 → Jul 05, 2024
       pattern: /^(\d{4})[\s\u3000]*年[\s\u3000]*(\d{1,2})[\s\u3000]*月[\s\u3000]*(\d{1,2})[\s\u3000]*日$/,
-      replaceFn: (_m, y, mo, d) => `${MONTHS_EN_SHORT[parseInt(mo,10)-1]} ${String(d).padStart(2,'0')}, ${y}`
+      replaceFn: (_m, y, mo, d) => `${MONTHS_EN_SHORT[parseInt(mo, 10) - 1]} ${String(d).padStart(2, '0')}, ${y}`
     },
     {
       // 2024-07-05 17:21 → Jul 05, 2024 17:21
       pattern: /^(\d{4})-(\d{2})-(\d{2})\s+(\d{2}):(\d{2})$/,
-      replaceFn: (_m, y, mo, d, hh, mm) => `${MONTHS_EN_SHORT[parseInt(mo,10)-1]} ${d}, ${y} ${hh}:${mm}`
+      replaceFn: (_m, y, mo, d, hh, mm) => `${MONTHS_EN_SHORT[parseInt(mo, 10) - 1]} ${d}, ${y} ${hh}:${mm}`
     },
-    
+
     { pattern: /^共\s*(\d+)\s*人$/, replace: "Total $1 members" },
     { pattern: /^将任务指派给了\s+(.+)$/, replace: "Assigned task to $1" },
     { pattern: /^将任务完成时间从\s+(.+)\s+修改为\s+(.+)$/, replace: "Set the due date from $1 to $2" },
     { pattern: /^将任务优先级从\s+(.+)\s+修改为\s+(.+)$/, replace: "Set the priority from $1 to $2" },
     { pattern: /^将任务添加到\s+(.+)$/, replace: "Add task to $1" },
     { pattern: /^(\d+)\s*小时前$/, replace: "$1 hours ago" },
+    { pattern: /^(\d+)\s*分钟前$/, replace: "$1 mins ago" },
     // 动态问题数量：你还有 X 个问题尚未填写
     { pattern: /^你还有\s*(\d+)\s*个问题尚未填写$/, replace: "You have $1 unanswered questions" },
     // 工作周报日期：工作周报 (YYYY-MM-DD)
-    { pattern: /^工作周报\s*\((\d{4})-(\d{2})-(\d{2})\)$/, replaceFn: (_m, y, mo, d) => `Weekly report (${MONTHS_EN_SHORT[parseInt(mo,10)-1]} ${d}, ${y})` },
+    { pattern: /^工作周报\s*\((\d{4})-(\d{2})-(\d{2})\)$/, replaceFn: (_m, y, mo, d) => `Weekly report (${MONTHS_EN_SHORT[parseInt(mo, 10) - 1]} ${d}, ${y})` },
     // 时间提醒：每周一 HH:MM 回答
-    { pattern: /^每周一\s*(\d{1,2}):(\d{2})\s*回答$/, replaceFn: (_m, hh, mm) => `Every Monday ${String(hh).padStart(2,'0')}:${mm} answer` }
+    { pattern: /^每周一\s*(\d{1,2}):(\d{2})\s*回答$/, replaceFn: (_m, hh, mm) => `Every Monday ${String(hh).padStart(2, '0')}:${mm} answer` },
+    // 中文日期格式：7月8日 → Jul 8
+    { pattern: /^(\d{1,2})月(\d{1,2})日$/, replaceFn: (_m, mo, d) => `${MONTHS_EN_SHORT[parseInt(mo, 10) - 1]} ${parseInt(d, 10)}` },
+    // Create于 2025-07-08 15:43 → Created on 2025-07-08 15:43
+    { pattern: /^Create于\s+(\d{4}-\d{2}-\d{2})\s+(\d{2}:\d{2})$/, replace: "Created on $1 $2" },
+    // 创建于 2025-07-08 15:43 → Created on 2025-07-08 15:43
+    { pattern: /^创建于\s+(\d{4}-\d{2}-\d{2})\s+(\d{2}:\d{2})$/, replace: "Created on $1 $2" },
+    // 在 15:43 回答了问题 → answered the question at 15:43
+    { pattern: /^在\s+(\d{1,2}:\d{2})\s+回答了问题$/, replace: "answered the question at $1" },
+    // 你有 X 条任务需要处理 → You have X tasks need to be processed
+    { pattern: /^你有\s+(\d+)\s+条任务需要处理。$/, replace: "You have $1 tasks need to be processed." },
+    // 用户名 已完成的任务 → Username's completed tasks
+    { pattern: /^(.+?)\s+已完成的任务$/, replace: "$1's completed tasks" },
+    // 展开 X 条讨论 → Expand X discussions (original Chinese)
+    { pattern: /^展开\s+(\d+)\s*条讨论$/, replace: "Expand $1 discussions" },
+    // Expand X 条讨论 → Expand X discussions (Expand is translated from 展开)
+    { pattern: /^Expand\s+(\d+)\s*条讨论$/, replace: "Expand $1 discussions" },
+    // 处理各种空格变化的情况
+    { pattern: /^Expand\s+(\d+)\s*discussions$/, replace: "Expand $1 discussions" },
+    // 确保单数字月份和日期格式被正确翻译：2024年1月4日 → Jan 04, 2024
+    { pattern: /^(\d{4})年(\d{1,2})月(\d{1,2})日$/, replaceFn: (_m, y, mo, d) => `${MONTHS_EN_SHORT[parseInt(mo, 10) - 1]} ${String(d).padStart(2, '0')}, ${y}` }
   ];
 
   // Selectors
@@ -823,11 +910,21 @@
     ".modal", ".dialog", ".popover", ".toast", ".tooltip",
     ".badge", ".tag", ".pill", ".label", ".btn",
     ".kanban", ".list", ".list-item", ".table", ".header-cell",
-     "label.due-date .selected-text span.value", ".fake-textarea",
-     ".create-time", ".desc",
+    "label.due-date .selected-text span.value", ".fake-textarea",
+    ".create-time", ".desc",
     ".event-created-at",
-    ".event-action", ".event-head a",".attachment-info .link-change-dir",".attachment-info .link-tag-attachment",
-    ".page-inner .page-desc"
+    ".event-action", ".event-action span", ".event-head a", ".attachment-info .link-change-dir", ".attachment-info .link-tag-attachment",
+    ".page-inner .page-desc",
+    ".answer-info .by-day", ".answer-info .by-time", ".answer-info .create-time",
+    ".bd-title",
+    ".notifications-group-item-summary",
+    "tr-readable-datetime", ".todo-completed-time",
+    ".page-title",
+    ".collapsed-events-count",
+    ".repository-overview p",
+    ".repository-form input[placeholder]", ".repository-form input[value]",".repository-form p",
+    ".editor-loading",
+    ".section .topics-settings", ".topics-settings .topics-setting", ".topics-setting .select .result"
   ].join(",");
 
   const BLOCK_SELECTOR = [
@@ -844,7 +941,7 @@
   ].join(",");
 
   // Attributes to translate
-  const ATTRS = ["placeholder", "title", "aria-label", "aria-placeholder", "data-placeholder", "data-title"];
+  const ATTRS = ["placeholder", "value", "title", "aria-label", "aria-placeholder", "data-placeholder", "data-title", "data-readable-date"];
 
   function closestMatches(el, selector) {
     try { return el.closest(selector); } catch { return null; }
@@ -853,34 +950,61 @@
   function isSkippableNode(node) {
     if (!node || !node.parentElement) return true;
     const p = node.parentElement;
-  
-    const inSelected   = p.closest && p.closest(".selected-text");
-    const inFake       = p.closest && p.closest(".fake-textarea");
-    const inButton     = p.closest && p.closest("button, .mdc-button, .tr-button, .mdc-button__label");
-    const inCreateTime = p.closest && p.closest(".create-time");
-    const inEventAct   = p.closest && p.closest(".event-action, .event-created-at");
-    const inEventHeadA = p.closest && p.closest(".event-head a");
-    const inAttachLink = p.closest && p.closest(".attachment-info .link-change-dir, .attachment-info .link-tag-attachment"); 
-    const inDesc       = p.closest && p.closest(".desc");
-    const inPageDesc   = p.closest && p.closest(".page-inner .page-desc");
 
-    if (!inSelected && !inFake && !inButton && !inCreateTime && !inEventAct && !inEventHeadA && !inAttachLink &&
-        p.closest && p.closest(BLOCK_SELECTOR)) return true;
-  
+    const inSelected = p.closest && p.closest(".selected-text");
+    const inFake = p.closest && p.closest(".fake-textarea");
+    const inButton = p.closest && p.closest("button, .mdc-button, .tr-button, .mdc-button__label");
+    const inCreateTime = p.closest && p.closest(".create-time");
+    const inEventAct = p.closest && p.closest(".event-action, .event-created-at");
+    const inEventActionSpan = p.closest && p.closest(".event-action span");
+    const inEventHeadA = p.closest && p.closest(".event-head a");
+    const inAttachLink = p.closest && p.closest(".attachment-info .link-change-dir, .attachment-info .link-tag-attachment");
+    const inDesc = p.closest && p.closest(".desc");
+    const inPageDesc = p.closest && p.closest(".page-inner .page-desc");
+    const inAnswerInfo = p.closest && p.closest(".answer-info");
+    const inAnswerByDay = p.closest && p.closest(".answer-info .by-day");
+    const inAnswerByTime = p.closest && p.closest(".answer-info .by-time");
+    const inAnswerCreateTime = p.closest && p.closest(".answer-info .create-time");
+    const inBdTitle = p.closest && p.closest(".bd-title");
+    const inNotificationSummary = p.closest && p.closest(".notifications-group-item-summary");
+    const inTrReadableDatetime = p.closest && p.closest("tr-readable-datetime");
+    const inTodoCompletedTime = p.closest && p.closest(".todo-completed-time");
+    const inPageTitle = p.closest && p.closest(".page-title");
+    const inCollapsedEventsCount = p.closest && p.closest(".collapsed-events-count");
+    const inRepositoryOverviewP = p.closest && p.closest(".repository-overview p");
+    const inRepositoryFormInputPlaceholder = p.closest && p.closest(".repository-form input[placeholder]");
+    const inRepositoryFormInputValue = p.closest && p.closest(".repository-form input[value]");
+    const inRepositoryFormP = p.closest && p.closest(".repository-form p");
+    const inEditorLoading = p.closest && p.closest(".editor-loading");
+    const inSectionTopicsSettings = p.closest && p.closest(".section .topics-settings");
+    const inTopicsSettingsTopicsSetting = p.closest && p.closest(".topics-settings .topics-setting");
+    const inTopicsSettingSelectResult = p.closest && p.closest(".topics-setting .select .result");
+
+    if (!inSelected && !inFake && !inButton && !inCreateTime && !inEventAct && !inEventActionSpan && !inEventHeadA && !inAttachLink &&
+      !inAnswerInfo && !inAnswerByDay && !inAnswerByTime && !inAnswerCreateTime && !inBdTitle && !inNotificationSummary &&
+      !inTrReadableDatetime && !inTodoCompletedTime && !inPageTitle && !inCollapsedEventsCount && !inRepositoryOverviewP &&
+      !inRepositoryFormInputPlaceholder && !inRepositoryFormInputValue && !inRepositoryFormP && !inEditorLoading &&
+      !inSectionTopicsSettings && !inTopicsSettingsTopicsSetting && !inTopicsSettingSelectResult &&
+      p.closest && p.closest(BLOCK_SELECTOR)) return true;
+
     const txt = (node.nodeValue || "").trim();
     if (!p.closest(ALLOW_SELECTOR) && txt.length > 16 &&
-        !p.closest(ACTIVITY_SELECTOR) && !inButton && !inSelected && !inFake &&
-        !inCreateTime && !inEventAct && !inEventHeadA && !inAttachLink && !inDesc && !inPageDesc) return true;
-  
+      !p.closest(ACTIVITY_SELECTOR) && !inButton && !inSelected && !inFake &&
+      !inCreateTime && !inEventAct && !inEventActionSpan && !inEventHeadA && !inAttachLink && !inDesc && !inPageDesc &&
+      !inAnswerInfo && !inAnswerByDay && !inAnswerByTime && !inAnswerCreateTime && !inBdTitle && !inNotificationSummary &&
+      !inTrReadableDatetime && !inTodoCompletedTime && !inPageTitle && !inCollapsedEventsCount && !inRepositoryOverviewP &&
+      !inRepositoryFormInputPlaceholder && !inRepositoryFormInputValue && !inRepositoryFormP && !inEditorLoading &&
+      !inSectionTopicsSettings && !inTopicsSettingsTopicsSetting && !inTopicsSettingSelectResult) return true;
+
     return false;
   }
-  
-  
+
+
 
   // Persistence
-  function saveEnabled(val) { try { chrome.storage && chrome.storage.local.set({ [STORAGE_ENABLED]: val }); } catch {} }
-  function saveMode(val) { try { chrome.storage && chrome.storage.local.set({ [STORAGE_MODE]: val }); } catch {} }
-  function saveActivity(val) { try { chrome.storage && chrome.storage.local.set({ [STORAGE_ACTIVITY]: val }); } catch {} }
+  function saveEnabled(val) { try { chrome.storage && chrome.storage.local.set({ [STORAGE_ENABLED]: val }); } catch { } }
+  function saveMode(val) { try { chrome.storage && chrome.storage.local.set({ [STORAGE_MODE]: val }); } catch { } }
+  function saveActivity(val) { try { chrome.storage && chrome.storage.local.set({ [STORAGE_ACTIVITY]: val }); } catch { } }
   function loadState(cb) {
     try {
       chrome.storage && chrome.storage.local.get([STORAGE_ENABLED, STORAGE_MODE, STORAGE_ACTIVITY], (res) => {
@@ -909,7 +1033,7 @@
       }
     }
     if (ranges.length === 0) return text;
-    ranges.sort((a,b)=>a.start-b.start);
+    ranges.sort((a, b) => a.start - b.start);
     let out = "", prev = 0;
     for (const r of ranges) {
       out += text.slice(prev, r.start) + r.en;
@@ -956,6 +1080,17 @@
       const translated = DICT[trimmed];
       return str.replace(trimmed, translated);
     }
+    
+    // Apply regex rules for patterns like dates
+    for (const rule of REGEX_RULES) {
+      if (rule.pattern.test(trimmed)) {
+        const replaced = typeof rule.replaceFn === "function"
+          ? trimmed.replace(rule.pattern, rule.replaceFn)
+          : trimmed.replace(rule.pattern, rule.replace);
+        return str.replace(trimmed, replaced);
+      }
+    }
+    
     const replaced = replaceLongestFirst(trimmed);
     if (replaced !== trimmed) return str.replace(trimmed, replaced);
     return str;
@@ -987,18 +1122,18 @@
     scanAndTranslateAttributes(root);
   }
 
-// ✅ only for attribute translation skip logic
-function shouldSkipElement(el) {
-  if (!el) return true;
-  if (el.closest && (el.closest(".notranslate") || el.closest("[data-no-translate]"))) return true;
+  // ✅ only for attribute translation skip logic
+  function shouldSkipElement(el) {
+    if (!el) return true;
+    if (el.closest && (el.closest(".notranslate") || el.closest("[data-no-translate]"))) return true;
 
-  // 不要对 input/textarea 的属性做屏蔽（placeholder/title/aria-*)
-  const tag = el.tagName && el.tagName.toLowerCase();
-  if (tag !== "input" && tag !== "textarea") {
-    if (el.closest && el.closest(BLOCK_SELECTOR)) return true;
+    // 不要对 input/textarea 的属性做屏蔽（placeholder/title/aria-*)
+    const tag = el.tagName && el.tagName.toLowerCase();
+    if (tag !== "input" && tag !== "textarea") {
+      if (el.closest && el.closest(BLOCK_SELECTOR)) return true;
+    }
+    return false;
   }
-  return false;
-}
 
 
   function translateAttribute(el, attr) {
@@ -1031,7 +1166,7 @@ function shouldSkipElement(el) {
 
   function translatePage() {
     if (!enabled) return;
-    try { walkAndTranslate(document.body); } catch {}
+    try { walkAndTranslate(document.body); } catch { }
   }
 
   let mo;
@@ -1039,11 +1174,16 @@ function shouldSkipElement(el) {
     if (mo) return;
     mo = new MutationObserver((muts) => {
       if (!enabled) return;
+      let hasNewElements = false;
       for (const mut of muts) {
         if (mut.type === "childList") {
           mut.addedNodes.forEach((n) => {
             if (n.nodeType === Node.TEXT_NODE) return;
-            if (n.nodeType === Node.ELEMENT_NODE) walkAndTranslate(n);
+            if (n.nodeType === Node.ELEMENT_NODE) {
+              hasNewElements = true;
+              // Immediate translation for immediate feedback
+              walkAndTranslate(n);
+            }
           });
         } else if (mut.type === "characterData") {
           const n = mut.target;
@@ -1053,6 +1193,22 @@ function shouldSkipElement(el) {
           if (shouldSkipElement(el)) continue;
           if (ATTRS.includes(mut.attributeName)) translateAttribute(el, mut.attributeName);
         }
+      }
+      
+      // Delayed re-translation for dynamic content that might load asynchronously
+      if (hasNewElements) {
+        setTimeout(() => {
+          if (!enabled) return;
+          for (const mut of muts) {
+            if (mut.type === "childList") {
+              mut.addedNodes.forEach((n) => {
+                if (n.nodeType === Node.ELEMENT_NODE) {
+                  walkAndTranslate(n);
+                }
+              });
+            }
+          }
+        }, 100);
       }
     });
     mo.observe(document.body, {
@@ -1129,6 +1285,34 @@ function shouldSkipElement(el) {
       initHotkeys();
     });
     setInterval(translateTitleTick, 500);
+    
+    // Periodic check for dynamic content that might have been missed
+    setInterval(() => {
+      if (!enabled) return;
+      // Check for common dynamic content selectors
+      const dynamicSelectors = [
+        'tr-readable-datetime',
+        '.todo-completed-time',
+        '.answer-info',
+        '.notifications-group-item-summary',
+        '.bd-title',
+        '.page-title',
+        '.collapsed-events-count',
+        '.event-action',
+        '.section .topics-settings',
+        '.topics-settings .topics-setting',
+        '.topics-setting .select .result'
+      ];
+      
+      dynamicSelectors.forEach(selector => {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach(el => {
+          if (el.textContent && el.textContent.trim()) {
+            walkAndTranslate(el);
+          }
+        });
+      });
+    }, 2000);
   }
 
   if (document.readyState === "loading") {
