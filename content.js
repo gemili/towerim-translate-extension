@@ -1,5 +1,5 @@
 
-// Tower.im UI Auto-Translate (EN) - v0.6
+// Tower.im UI Auto-Translate (EN) - v0.6.1
 // NEW: translate placeholders/titles/aria-* attributes; observe attribute changes.
 // Keeps STRICT by default; auto-RELAXED in activity feeds. Regex-capture rules for dynamic sentences.
 
@@ -745,6 +745,13 @@
     "绑定": "Bind",
     "绑定后，可直接使用微信登录 Tower.": "After binding, you can directly use WeChat to log in to Tower.",
     "App 通知：开启": "App notification: open",
+    "你还有": "You have",
+    "个问题尚未填写": " unanswered questions",
+    "每周一": "Every Monday",
+    "回答": "answer",
+    "问题": "question",
+    "尚未": "not yet",
+    "填写": "filled in",
   };
 
   const REGEX_RULES = [
@@ -794,7 +801,13 @@
     { pattern: /^将任务完成时间从\s+(.+)\s+修改为\s+(.+)$/, replace: "Set the due date from $1 to $2" },
     { pattern: /^将任务优先级从\s+(.+)\s+修改为\s+(.+)$/, replace: "Set the priority from $1 to $2" },
     { pattern: /^将任务添加到\s+(.+)$/, replace: "Add task to $1" },
-    { pattern: /^(\d+)\s*小时前$/, replace: "$1 hours ago" }
+    { pattern: /^(\d+)\s*小时前$/, replace: "$1 hours ago" },
+    // 动态问题数量：你还有 X 个问题尚未填写
+    { pattern: /^你还有\s*(\d+)\s*个问题尚未填写$/, replace: "You have $1 unanswered questions" },
+    // 工作周报日期：工作周报 (YYYY-MM-DD)
+    { pattern: /^工作周报\s*\((\d{4})-(\d{2})-(\d{2})\)$/, replaceFn: (_m, y, mo, d) => `Weekly report (${MONTHS_EN_SHORT[parseInt(mo,10)-1]} ${d}, ${y})` },
+    // 时间提醒：每周一 HH:MM 回答
+    { pattern: /^每周一\s*(\d{1,2}):(\d{2})\s*回答$/, replaceFn: (_m, hh, mm) => `Every Monday ${String(hh).padStart(2,'0')}:${mm} answer` }
   ];
 
   // Selectors
