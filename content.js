@@ -1,5 +1,5 @@
 
-// Tower.im UI Auto-Translate (EN) - v0.6.2
+// Tower.im UI Auto-Translate (EN) - v0.6.3
 // NEW: translate placeholders/titles/aria-* attributes; observe attribute changes.
 // Keeps STRICT by default; auto-RELAXED in activity feeds. Regex-capture rules for dynamic sentences.
 
@@ -176,6 +176,7 @@
     "标题 2": "Heading 2",
     "标题 3": "Heading 3",
     "回复": "Reply",
+    "回复：": "Replied:",
     "知道了": "Noted",
     "所有成员": "All members",
     "收藏": "Favorite",
@@ -958,7 +959,9 @@
       }},
     // 处理被br标签分割的访客权限说明
     { pattern: /^访客可以参与项目的进行，$/, replace: "Visitors can participate in project activities, " },
-    { pattern: /^但只能看到和自己在同一个项目的团队成员。$/, replace: "but can only see team members who are in the same project as themselves." }
+    { pattern: /^但只能看到和自己在同一个项目的团队成员。$/, replace: "but can only see team members who are in the same project as themselves." },
+    // 处理回复文本：回复：xxx → Replied: xxx
+    { pattern: /^回复：(.+)$/, replace: "Replied: $1" }
   ];
 
   // Selectors
@@ -983,6 +986,7 @@
     ".answer-info .by-day", ".answer-info .by-time", ".answer-info .create-time",
     ".bd-title",
     ".notifications-group-item-summary",
+    ".notifications-group-item-content",
     ".comment-notify-members",
     "tr-readable-datetime", ".todo-completed-time",
     ".page-title",
@@ -1036,6 +1040,7 @@
     const inAnswerCreateTime = p.closest && p.closest(".answer-info .create-time");
     const inBdTitle = p.closest && p.closest(".bd-title");
     const inNotificationSummary = p.closest && p.closest(".notifications-group-item-summary");
+    const inNotificationContent = p.closest && p.closest(".notifications-group-item-content");
     const inTrReadableDatetime = p.closest && p.closest("tr-readable-datetime");
     const inTodoCompletedTime = p.closest && p.closest(".todo-completed-time");
     const inPageTitle = p.closest && p.closest(".page-title");
@@ -1060,7 +1065,8 @@
       !inTrReadableDatetime && !inTodoCompletedTime && !inPageTitle && !inCollapsedEventsCount && !inRepositoryOverviewP &&
       !inRepositoryFormInputPlaceholder && !inRepositoryFormInputValue && !inRepositoryFormP && !inEditorLoading &&
       !inSectionTopicsSettings && !inTopicsSettingsTopicsSetting && !inTopicsSettingSelectResult && !inCommentNotifyMembers &&
-      !inEditorDraftTip && !inCkPlaceholder && !inCkButtonLabel && !inCkTooltipText && !inInitDesc && p.closest && p.closest(BLOCK_SELECTOR)) return true;    
+      !inEditorDraftTip && !inCkPlaceholder && !inCkButtonLabel && !inCkTooltipText && !inInitDesc && !inNotificationContent &&
+      p.closest && p.closest(BLOCK_SELECTOR)) return true;    
 
     const txt = (node.nodeValue || "").trim();
     if (!p.closest(ALLOW_SELECTOR) && txt.length > 16 &&
@@ -1070,7 +1076,7 @@
       !inTrReadableDatetime && !inTodoCompletedTime && !inPageTitle && !inCollapsedEventsCount && !inRepositoryOverviewP &&
       !inRepositoryFormInputPlaceholder && !inRepositoryFormInputValue && !inRepositoryFormP && !inEditorLoading &&
       !inSectionTopicsSettings && !inTopicsSettingsTopicsSetting && !inTopicsSettingSelectResult && !inCommentNotifyMembers &&
-      !inEditorDraftTip && !inCkPlaceholder && !inCkButtonLabel && !inCkTooltipText && !inInitDesc) return true;
+      !inEditorDraftTip && !inCkPlaceholder && !inCkButtonLabel && !inCkTooltipText && !inInitDesc && !inNotificationContent) return true;
 
     return false;
   }
@@ -1389,7 +1395,7 @@
       // Check for dynamic content selectors
       const dynamicSelectors = [
         'tr-readable-datetime', '.todo-completed-time', '.answer-info',
-        '.notifications-group-item-summary', '.bd-title', '.page-title',
+        '.notifications-group-item-summary', '.notifications-group-item-content', '.bd-title', '.page-title',
         '.collapsed-events-count', '.event-action', '.section .topics-settings',
         '.topics-settings .topics-setting', '.topics-setting .select .result',
         '.comment-notify-members', '.editor-draft-tip'

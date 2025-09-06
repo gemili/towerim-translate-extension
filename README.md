@@ -1,7 +1,13 @@
 
-# Tower.im UI Auto-Translate (EN) — v0.6.2
+# Tower.im UI Auto-Translate (EN) — v0.6.3
 
-**What's new in v0.6.2**
+**What's new in v0.6.3**
+- Added regex pattern for "回复：" text translation (Replied:)
+- Enhanced notification content translation support
+- Fixed translation logic for notification group items
+- Improved dynamic content detection for reply messages
+
+**Previous features (v0.6.2)**
 - Added support for CKEditor UI elements (placeholders, tooltips, button labels)
 - Enhanced dynamic text detection for status messages and notifications
 - Added translation for visitor permission descriptions and editor help text
