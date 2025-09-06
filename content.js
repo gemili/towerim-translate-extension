@@ -1,5 +1,5 @@
 
-// Tower.im UI Auto-Translate (EN) - v0.6.1
+// Tower.im UI Auto-Translate (EN) - v0.6.2
 // NEW: translate placeholders/titles/aria-* attributes; observe attribute changes.
 // Keeps STRICT by default; auto-RELAXED in activity feeds. Regex-capture rules for dynamic sentences.
 
@@ -36,6 +36,7 @@
     "标签": "Tags",
     "优先级": "Priority",
     "状态": "Status",
+    "负责": "Assign",
     "负责人": "Assignee",
     "创建人": "Creator",
     "创建时间": "Created",
@@ -329,6 +330,7 @@
     "展开所有子任务": "Expand all subtasks",
     "收起所有子任务": "Collapse all subtasks",
     "添加日程": "Add calendar event",
+    "新建日程": "New calendar event",
     "+ 添加日历": "+ Add calendar",
     "创建日程": "Create event",
     "在这里输入日程标题": "Enter event title here",
@@ -598,6 +600,9 @@
     "新建汇报问题": "New report question",
     "问题名称": "Question name",
     "工作周报": "Weekly report",
+    "在每周的": "Every",
+    "在每月的": "Every monthly",
+    "提问": "Ask",
     "问题描述": "Question description",
     "上下拖动可对问题进行排序": "Drag up and down to sort the questions",
     "请总结上周工作内容，并提交本周工作计划": "Please summarize the work content of last week and submit the work plan for this week",
@@ -816,8 +821,26 @@
     "输入知识库标题": "Enter knowledge base title",
     "正在加载编辑器...": "Loading editor...",
     "隐藏": "Hide",
-    "显示": "Show"
-    
+    "显示": "Show",
+    "标记成正在进行中": "Mark as in progress",
+    "确定要删除这条任务吗？": "Are you sure you want to delete this task?",
+    "通知记录": "Notification records",
+    "没有通知任何人员。": "No one will receive notifications.",
+    "点击完成任务": "Click to complete the task",
+    "最后修改于": "Last modified at",
+    "草稿已自动保存": "Draft has been automatically saved",
+    "确定要丢弃未发布的草稿吗？": "Discard unpublished draft?",
+    "丢弃草稿": "Discard draft",
+    "保留草稿": "Keep draft",
+    "还没有已完成的任务": "No completed tasks yet",
+    "没有更多内容了": "No more content",
+    "正在加载更多...": "Loading more...",
+    "查看编辑器帮助文档": "View eidtor help document",
+    "输入评论内容": "Enter comment content",
+    "正在保存...": "Saving...",
+    "访客可以参与项目的进行，但只能看到和自己在同一个项目的团队成员。": "Visitors can participate in project activities, but can only see team members who are in the same project as themselves.",
+    "访客可以参与项目的进行，": "Visitors can participate in project activities, ",
+    "但只能看到和自己在同一个项目的团队成员。": "but can only see team members who are in the same project as themselves.",
   };
 
   const REGEX_RULES = [
@@ -864,6 +887,8 @@
 
     { pattern: /^共\s*(\d+)\s*人$/, replace: "Total $1 members" },
     { pattern: /^将任务指派给了\s+(.+)$/, replace: "Assigned task to $1" },
+    // 处理具体日期格式：将任务完成时间从 09月03日 修改为 09月05日 (必须放在通用规则之前)
+    { pattern: /^将任务完成时间从\s*(\d{1,2})月(\d{1,2})日\s*修改为\s*(\d{1,2})月(\d{1,2})日$/, replaceFn: (_m, mo1, d1, mo2, d2) => `Set the due date from ${MONTHS_EN_SHORT[parseInt(mo1, 10) - 1]} ${String(parseInt(d1, 10)).padStart(2, '0')} to ${MONTHS_EN_SHORT[parseInt(mo2, 10) - 1]} ${String(parseInt(d2, 10)).padStart(2, '0')}` },
     { pattern: /^将任务完成时间从\s+(.+)\s+修改为\s+(.+)$/, replace: "Set the due date from $1 to $2" },
     { pattern: /^将任务优先级从\s+(.+)\s+修改为\s+(.+)$/, replace: "Set the priority from $1 to $2" },
     { pattern: /^将任务添加到\s+(.+)$/, replace: "Add task to $1" },
@@ -875,8 +900,11 @@
     { pattern: /^工作周报\s*\((\d{4})-(\d{2})-(\d{2})\)$/, replaceFn: (_m, y, mo, d) => `Weekly report (${MONTHS_EN_SHORT[parseInt(mo, 10) - 1]} ${d}, ${y})` },
     // 时间提醒：每周一 HH:MM 回答
     { pattern: /^每周一\s*(\d{1,2}):(\d{2})\s*回答$/, replaceFn: (_m, hh, mm) => `Every Monday ${String(hh).padStart(2, '0')}:${mm} answer` },
-    // 中文日期格式：7月8日 → Jul 8
-    { pattern: /^(\d{1,2})月(\d{1,2})日$/, replaceFn: (_m, mo, d) => `${MONTHS_EN_SHORT[parseInt(mo, 10) - 1]} ${parseInt(d, 10)}` },
+    // 中文日期格式：7月8日 → Jul 8, 09月03日 → Sep 03
+    { pattern: /^(\d{1,2})月(\d{1,2})日$/, replaceFn: (_m, mo, d) => `${MONTHS_EN_SHORT[parseInt(mo, 10) - 1]} ${String(parseInt(d, 10)).padStart(2, '0')}` },
+    // 测试：09月03日 → Sep 03
+    { pattern: /^09月03日$/, replace: "Sep 03" },
+    { pattern: /^09月05日$/, replace: "Sep 05" },
     // Create于 2025-07-08 15:43 → Created on 2025-07-08 15:43
     { pattern: /^Create于\s+(\d{4}-\d{2}-\d{2})\s+(\d{2}:\d{2})$/, replace: "Created on $1 $2" },
     // 创建于 2025-07-08 15:43 → Created on 2025-07-08 15:43
@@ -894,12 +922,49 @@
     // 处理各种空格变化的情况
     { pattern: /^Expand\s+(\d+)\s*discussions$/, replace: "Expand $1 discussions" },
     // 确保单数字月份和日期格式被正确翻译：2024年1月4日 → Jan 04, 2024
-    { pattern: /^(\d{4})年(\d{1,2})月(\d{1,2})日$/, replaceFn: (_m, y, mo, d) => `${MONTHS_EN_SHORT[parseInt(mo, 10) - 1]} ${String(d).padStart(2, '0')}, ${y}` }
+    { pattern: /^(\d{4})年(\d{1,2})月(\d{1,2})日$/, replaceFn: (_m, y, mo, d) => `${MONTHS_EN_SHORT[parseInt(mo, 10) - 1]} ${String(d).padStart(2, '0')}, ${y}` },
+    // 处理只有年月的格式：2025年9月 → Sep 2025
+    { pattern: /^(\d{4})\s*年\s*(\d{1,2})\s*月$/, replaceFn: (_m, y, mo) => `${MONTHS_EN_SHORT[parseInt(mo, 10) - 1]} ${y}` },
+    // 处理中文月份名称格式：2025 九月 → Sep 2025
+    { pattern: /^(\d{4})\s*([一二三四五六七八九十]+)\s*月$/, replaceFn: (_m, y, mo) => {
+        const monthMap = {
+          "一": 1, "二": 2, "三": 3, "四": 4, "五": 5, "六": 6,
+          "七": 7, "八": 8, "九": 9, "十": 10, "十一": 11, "十二": 12
+        };
+        const monthNum = monthMap[mo] || parseInt(mo, 10);
+        return `${MONTHS_EN_SHORT[monthNum - 1]} ${y}`;
+      }},
+    // 处理相对日期格式：下周五 → Next Friday
+    { pattern: /^(下|这|本)([一二三四五六日])$/, replaceFn: (_m, prefix, day) => {
+        const dayMap = {
+          "一": "Monday", "二": "Tuesday", "三": "Wednesday", "四": "Thursday",
+          "五": "Friday", "六": "Saturday", "日": "Sunday"
+        };
+        const dayName = dayMap[day] || day;
+        if (prefix === "下") return `Next ${dayName}`;
+        if (prefix === "这" || prefix === "本") return `This ${dayName}`;
+        return `${prefix}${dayName}`;
+      }},
+    // 处理带"周"字的相对日期格式：下周五 → Next Friday
+    { pattern: /^(下|这|本)周([一二三四五六日])$/, replaceFn: (_m, prefix, day) => {
+        const dayMap = {
+          "一": "Monday", "二": "Tuesday", "三": "Wednesday", "四": "Thursday",
+          "五": "Friday", "六": "Saturday", "日": "Sunday"
+        };
+        const dayName = dayMap[day] || day;
+        if (prefix === "下") return `Next ${dayName}`;
+        if (prefix === "这" || prefix === "本") return `This ${dayName}`;
+        return `${prefix} ${dayName}`;
+      }},
+    // 处理被br标签分割的访客权限说明
+    { pattern: /^访客可以参与项目的进行，$/, replace: "Visitors can participate in project activities, " },
+    { pattern: /^但只能看到和自己在同一个项目的团队成员。$/, replace: "but can only see team members who are in the same project as themselves." }
   ];
 
   // Selectors
   const ALLOW_SELECTOR = [
     "nav", "header", "aside", "footer",
+    "h1", "h2", "h3", "h4", "h5", "h6",
     "button", "a", "label", "summary",
     "[role='button']", "[role='menu']", "[role='menuitem']",
     "[role='tab']", "[role='tablist']", "[role='switch']",
@@ -918,12 +983,16 @@
     ".answer-info .by-day", ".answer-info .by-time", ".answer-info .create-time",
     ".bd-title",
     ".notifications-group-item-summary",
+    ".comment-notify-members",
     "tr-readable-datetime", ".todo-completed-time",
     ".page-title",
     ".collapsed-events-count",
     ".repository-overview p",
     ".repository-form input[placeholder]", ".repository-form input[value]",".repository-form p",
     ".editor-loading",
+    ".editor-draft-tip",
+    ".ck-placeholder", ".ck-button__label", ".ck-tooltip__text",
+    ".init-desc",
     ".section .topics-settings", ".topics-settings .topics-setting", ".topics-setting .select .result"
   ].join(",");
 
@@ -979,22 +1048,29 @@
     const inSectionTopicsSettings = p.closest && p.closest(".section .topics-settings");
     const inTopicsSettingsTopicsSetting = p.closest && p.closest(".topics-settings .topics-setting");
     const inTopicsSettingSelectResult = p.closest && p.closest(".topics-setting .select .result");
+    const inCommentNotifyMembers = p.closest && p.closest(".comment-notify-members");
+    const inEditorDraftTip = p.closest && p.closest(".editor-draft-tip");
+    const inCkPlaceholder = p.closest && p.closest(".ck-placeholder");
+    const inCkButtonLabel = p.closest && p.closest(".ck-button__label");
+    const inCkTooltipText = p.closest && p.closest(".ck-tooltip__text");
+    const inInitDesc = p.closest && p.closest(".init-desc");
 
-    if (!inSelected && !inFake && !inButton && !inCreateTime && !inEventAct && !inEventActionSpan && !inEventHeadA && !inAttachLink &&
+    if (!inSelected && !inFake && !inButton && !inCreateTime && !inEventAct && !inEventHeadA && !inAttachLink &&
       !inAnswerInfo && !inAnswerByDay && !inAnswerByTime && !inAnswerCreateTime && !inBdTitle && !inNotificationSummary &&
       !inTrReadableDatetime && !inTodoCompletedTime && !inPageTitle && !inCollapsedEventsCount && !inRepositoryOverviewP &&
       !inRepositoryFormInputPlaceholder && !inRepositoryFormInputValue && !inRepositoryFormP && !inEditorLoading &&
-      !inSectionTopicsSettings && !inTopicsSettingsTopicsSetting && !inTopicsSettingSelectResult &&
-      p.closest && p.closest(BLOCK_SELECTOR)) return true;
+      !inSectionTopicsSettings && !inTopicsSettingsTopicsSetting && !inTopicsSettingSelectResult && !inCommentNotifyMembers &&
+      !inEditorDraftTip && !inCkPlaceholder && !inCkButtonLabel && !inCkTooltipText && !inInitDesc && p.closest && p.closest(BLOCK_SELECTOR)) return true;    
 
     const txt = (node.nodeValue || "").trim();
     if (!p.closest(ALLOW_SELECTOR) && txt.length > 16 &&
       !p.closest(ACTIVITY_SELECTOR) && !inButton && !inSelected && !inFake &&
-      !inCreateTime && !inEventAct && !inEventActionSpan && !inEventHeadA && !inAttachLink && !inDesc && !inPageDesc &&
+      !inCreateTime && !inEventAct && !inEventHeadA && !inAttachLink && !inDesc && !inPageDesc &&
       !inAnswerInfo && !inAnswerByDay && !inAnswerByTime && !inAnswerCreateTime && !inBdTitle && !inNotificationSummary &&
       !inTrReadableDatetime && !inTodoCompletedTime && !inPageTitle && !inCollapsedEventsCount && !inRepositoryOverviewP &&
       !inRepositoryFormInputPlaceholder && !inRepositoryFormInputValue && !inRepositoryFormP && !inEditorLoading &&
-      !inSectionTopicsSettings && !inTopicsSettingsTopicsSetting && !inTopicsSettingSelectResult) return true;
+      !inSectionTopicsSettings && !inTopicsSettingsTopicsSetting && !inTopicsSettingSelectResult && !inCommentNotifyMembers &&
+      !inEditorDraftTip && !inCkPlaceholder && !inCkButtonLabel && !inCkTooltipText && !inInitDesc) return true;
 
     return false;
   }
@@ -1187,7 +1263,10 @@
           });
         } else if (mut.type === "characterData") {
           const n = mut.target;
-          if (!isSkippableNode(n)) translateNodeValue(n);
+          if (!isSkippableNode(n)) {
+            // Immediate translation for any text change
+            translateNodeValue(n);
+          }
         } else if (mut.type === "attributes") {
           const el = mut.target;
           if (shouldSkipElement(el)) continue;
@@ -1278,6 +1357,7 @@
     });
   }
 
+
   function init() {
     loadState(() => {
       if (enabled) { translatePage(); startObserver(); }
@@ -1286,22 +1366,33 @@
     });
     setInterval(translateTitleTick, 500);
     
-    // Periodic check for dynamic content that might have been missed
+    // Optimized combined periodic check (reduced from multiple timers to one)
     setInterval(() => {
       if (!enabled) return;
-      // Check for common dynamic content selectors
+      
+      // Check for status messages and notifications (high priority)
+      const statusSelectors = [
+        '.toast', '.notification', '.alert', '.message', '.status',
+        '.ck-tooltip', '.tooltip', '.popover', '.modal',
+        '[data-placeholder]', '.placeholder'
+      ];
+      
+      statusSelectors.forEach(selector => {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach(el => {
+          if (el.textContent && el.textContent.trim()) {
+            walkAndTranslate(el);
+          }
+        });
+      });
+      
+      // Check for dynamic content selectors
       const dynamicSelectors = [
-        'tr-readable-datetime',
-        '.todo-completed-time',
-        '.answer-info',
-        '.notifications-group-item-summary',
-        '.bd-title',
-        '.page-title',
-        '.collapsed-events-count',
-        '.event-action',
-        '.section .topics-settings',
-        '.topics-settings .topics-setting',
-        '.topics-setting .select .result'
+        'tr-readable-datetime', '.todo-completed-time', '.answer-info',
+        '.notifications-group-item-summary', '.bd-title', '.page-title',
+        '.collapsed-events-count', '.event-action', '.section .topics-settings',
+        '.topics-settings .topics-setting', '.topics-setting .select .result',
+        '.comment-notify-members', '.editor-draft-tip'
       ];
       
       dynamicSelectors.forEach(selector => {
@@ -1312,7 +1403,38 @@
           }
         });
       });
-    }, 2000);
+      
+      // Check for Chinese text that needs immediate translation
+      const walker = document.createTreeWalker(
+        document.body,
+        NodeFilter.SHOW_TEXT,
+        {
+          acceptNode: function(node) {
+            if (isSkippableNode(node)) return NodeFilter.FILTER_REJECT;
+            const text = (node.nodeValue || "").trim();
+            // Look for critical status messages or any Chinese text in dictionary
+            if (text && (
+              text === "草稿已自动保存" ||
+              text === "正在保存..." ||
+              text === "输入评论内容" ||
+              text === "没有通知任何人员。" ||
+              Object.prototype.hasOwnProperty.call(DICT, text)
+            )) {
+              return NodeFilter.FILTER_ACCEPT;
+            }
+            return NodeFilter.FILTER_REJECT;
+          }
+        }
+      );
+      
+      const textNodes = [];
+      let node;
+      while (node = walker.nextNode()) {
+        textNodes.push(node);
+      }
+      
+      textNodes.forEach(translateNodeValue);
+    }, 500); // Reduced from multiple timers to single 500ms timer
   }
 
   if (document.readyState === "loading") {
