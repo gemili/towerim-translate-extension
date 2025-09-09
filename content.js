@@ -1,5 +1,4 @@
-
-// Tower.im UI Auto-Translate (EN) - v0.6.3
+// Tower.im UI Auto-Translate (EN) - v0.6.9
 // NEW: translate placeholders/titles/aria-* attributes; observe attribute changes.
 // Keeps STRICT by default; auto-RELAXED in activity feeds. Regex-capture rules for dynamic sentences.
 
@@ -63,6 +62,7 @@
     "批量导入任务": "Bulk import tasks",
     "查看已归档清单": "View archived lists",
     "导出为 Excel": "Export to Excel",
+    "没有已归档的任务清单": "No archived lists yet",
     "子任务以树状结构显示": "Show subtasks as tree structure",
     "复制链接": "Copy link",
     "链接已复制": "Link copied",
@@ -124,8 +124,16 @@
     "日历成员": "Calendar members",
     "文件成员": "File members",
     "讨论成员": "Discussion members",
+    "团队成员": "Team members",
     "汇报": "Report",
     "填写汇报": "Fill report",
+    "输入汇报内容": "Enter report content",
+    "提交我的汇报": "Submit my report",
+    "修改查看者": "Modify viewers",
+    "插入本周完成任务": "Insert completed tasks in this week",
+    "插入上周完成任务": "Insert completed tasks in last week",
+    "插入本周新增任务": "Insert new tasks in this week",
+    "插入上周新增任务": "Insert new tasks in last week",
     "工作周报": "Weekly report",
     "知识库": "Knowledge",
     "个人知识库": "My Knowledge",
@@ -139,6 +147,7 @@
     "创建知识库": "Create knowledge",
     "团队知识库的内容对团队内所有成员公开，你可以将它用于和团队成员共享与同步知识。": "The team knowledge base is visible to all team members. Use it to share and sync knowledge with your team.",
     "创建文档": "Create document",
+    "Tower 文档": "Tower document",
     "文档夹": "Document folder",
     "普通文档": "Document",
     "导入本地文件": "Import local file",
@@ -168,6 +177,10 @@
     "插入表格": "Insert table",
     "分割线": "Divider",
     "对齐": "Align",
+    "居中": "Center",
+    "左对齐": "Left align",
+    "右对齐": "Right align",
+    "两端对齐": "Justify",
     "增加缩进": "Increase indent",
     "减少缩进": "Decrease indent",
     "资源卡片": "Resource card",
@@ -252,6 +265,7 @@
     "已归档项目": "Archived projects",
     "已删除项目": "Deleted projects",
     "添加任务": "Add task",
+    "创建清单": "Create list",
     "添加清单": "Add list",
     "编辑清单": "Edit list",
     "归档清单": "Archive list",
@@ -292,6 +306,9 @@
     "目标权重": "Target weight",
     "完成百分比%": "Completion %",
     "备注": "Note",
+    "任务 ID": "Task ID",
+    "预估工时": "Estimated hours",
+    "实际工时": "Actual hours",
     "显示/隐藏任务字段": "Show/hide task fields",
     "默认": "Default",
     "我负责的": "My tasks",
@@ -380,6 +397,8 @@
     "邀请了": "invited",
     "加入": "joined",
     "选择项目成员": "Select project members",
+    "保存项目成员": "Save project members",
+    "查看、修改项目成员": "View, modify project members",
     "链接邀请": "Link invite",
     "微信邀请": "WeChat invite",
     "扫码邀请": "Scan invite",
@@ -449,6 +468,17 @@
     "创建进展": "Create progress",
     "添加进展详情": "Add progress details",
     "进展名称": "Progress name",
+    "更新项目状态": "Update project status",
+    "项目状态：": "Project status: ",
+    "输入标题": "Enter title",
+    "输入项目状态内容": "Enter project status content",
+    "发布": "Publish",
+    "任务统计": "Task ",
+    "动态历史": "Dynamic history",
+    "项目信息": "Project information",
+    "项目描述": "Project description",
+    "添加项目描述": "Add project description",
+
     "还没有项目": "No projects yet",
     "添加一个或多个项目以查看进展": "Add one or more projects to view progress",
     "添加项目": "Add project",
@@ -497,6 +527,7 @@
     "删除项目": "Delete project",
     "项目删除后，所有的内容也将被立刻删除，请谨慎操作。": "Deleting the project will immediately remove all its contents. Proceed with caution.",
     "了解风险，删除这个项目": "I understand the risks. Delete this project",
+    "输入标题，回车创建，ESC取消": "Enter title, press Enter to create, ESC to cancel",
     "输入标题，回车创建": "Enter title, press Enter to create",
     "清单外任务": "Tasks outside the list",
     "选择负责人": "Select assignee",
@@ -842,6 +873,43 @@
     "访客可以参与项目的进行，但只能看到和自己在同一个项目的团队成员。": "Visitors can participate in project activities, but can only see team members who are in the same project as themselves.",
     "访客可以参与项目的进行，": "Visitors can participate in project activities, ",
     "但只能看到和自己在同一个项目的团队成员。": "but can only see team members who are in the same project as themselves.",
+    "升序": "Ascd",
+    "降序": "Descd",
+    "在下一行添加新任务": "Add new task in the next line",
+    "自动计算": "Auto calculate",
+    "不展示": "Not display",
+    "记录总数": "Total records",
+    "未填写": "Not filled in",
+    "已填写": "Filled in",
+    "唯一值": "Unique value",
+    "未填写占比": "Not filled in percentage",
+    "已填写占比": "Filled in percentage",
+    "选项占比图": "Option percentage chart",
+    "所有状态": "All status",
+    "添加筛选条件": "Add filter condition",
+    "任务自定义字段": "Task custom fields",
+    "输入清单名称": "Enter list name",
+    "添加": "Add",
+    "手动排序": "Manual sort",
+    "项目中被删除的任务、讨论、文件和附件都能在这里找到并恢复。": "Tasks, discussions, files and attachments deleted in the project can be found and restored here.",
+    "删除了": "Deleted",
+    "删除了：": "Deleted:",
+    "名称": "Name",
+    "大小": "Size",
+    "最后版本上传者": "Last version uploaded by",
+    "记录总数：": "Total records:",
+    "未填写：": "Not filled in:",
+    "已填写：": "Filled in:",
+    "唯一值：": "Unique value:",
+    "未填写占比：": "Not filled in percentage:",
+    "已填写占比：": "Filled in percentage:",
+    "选项占比图：": "Option percentage chart:",
+    "展开全部子任务": "Expand all subtasks",
+    "收起全部子任务": "Collapse all subtasks",
+    "添加字段": "Add field",
+    "添加里程碑": "Add milestone",
+    "点击了解更多": "Click to view more",
+    "编辑全局标签后，所有项目中使用的该全局标签将会被同步修改，确认编辑？": "After editing the global tag, all projects using the global tag will be synchronized to modify, confirm edit?",
   };
 
   const REGEX_RULES = [
@@ -865,7 +933,7 @@
     },
     {
       // “项目：广告素材策划&设计” → “Project: 广告素材策划&设计”
-      // 只替换开头的“项目：”，其余文本原样保留
+      // 只替换开头的"项目："，其余文本原样保留
       pattern: /^项目[\s\u3000]*[:：][\s\u3000]*/u,
       replace: "Project: "
     },
@@ -888,6 +956,11 @@
 
     { pattern: /^共\s*(\d+)\s*人$/, replace: "Total $1 members" },
     { pattern: /^将任务指派给了\s+(.+)$/, replace: "Assigned task to $1" },
+    { 
+      pattern: /^将\s*(.+?)\s*的子任务指派给了\s*(.+?)\s*[。.!！]?$/u,
+      replace: "Assigned subtask of $1 to $2"
+    },
+    
     // 处理具体日期格式：将任务完成时间从 09月03日 修改为 09月05日 (必须放在通用规则之前)
     { pattern: /^将任务完成时间从\s*(\d{1,2})月(\d{1,2})日\s*修改为\s*(\d{1,2})月(\d{1,2})日$/, replaceFn: (_m, mo1, d1, mo2, d2) => `Set the due date from ${MONTHS_EN_SHORT[parseInt(mo1, 10) - 1]} ${String(parseInt(d1, 10)).padStart(2, '0')} to ${MONTHS_EN_SHORT[parseInt(mo2, 10) - 1]} ${String(parseInt(d2, 10)).padStart(2, '0')}` },
     { pattern: /^将任务完成时间从\s+(.+)\s+修改为\s+(.+)$/, replace: "Set the due date from $1 to $2" },
@@ -903,9 +976,10 @@
     { pattern: /^每周一\s*(\d{1,2}):(\d{2})\s*回答$/, replaceFn: (_m, hh, mm) => `Every Monday ${String(hh).padStart(2, '0')}:${mm} answer` },
     // 中文日期格式：7月8日 → Jul 8, 09月03日 → Sep 03
     { pattern: /^(\d{1,2})月(\d{1,2})日$/, replaceFn: (_m, mo, d) => `${MONTHS_EN_SHORT[parseInt(mo, 10) - 1]} ${String(parseInt(d, 10)).padStart(2, '0')}` },
-    // 测试：09月03日 → Sep 03
-    { pattern: /^09月03日$/, replace: "Sep 03" },
-    { pattern: /^09月05日$/, replace: "Sep 05" },
+    // 中文日期时间格式：09月08日 11:34 → Sep 08 11:34
+    { pattern: /^(\d{1,2})月(\d{1,2})日\s+(\d{1,2}):(\d{2})$/, replaceFn: (_m, mo, d, h, m) => `${MONTHS_EN_SHORT[parseInt(mo, 10) - 1]} ${String(parseInt(d, 10)).padStart(2, '0')} ${String(parseInt(h, 10)).padStart(2, '0')}:${m}` },
+    // 完整中文日期时间格式：2024年07月12日 14:31 → Jul 12, 2024 14:31
+    { pattern: /^(\d{4})年(\d{1,2})月(\d{1,2})日\s+(\d{1,2}):(\d{2})$/, replaceFn: (_m, y, mo, d, h, m) => `${MONTHS_EN_SHORT[parseInt(mo, 10) - 1]} ${String(parseInt(d, 10)).padStart(2, '0')}, ${y} ${String(parseInt(h, 10)).padStart(2, '0')}:${m}` },
     // Create于 2025-07-08 15:43 → Created on 2025-07-08 15:43
     { pattern: /^Create于\s+(\d{4}-\d{2}-\d{2})\s+(\d{2}:\d{2})$/, replace: "Created on $1 $2" },
     // 创建于 2025-07-08 15:43 → Created on 2025-07-08 15:43
@@ -997,6 +1071,7 @@
     ".editor-draft-tip",
     ".ck-placeholder", ".ck-button__label", ".ck-tooltip__text",
     ".init-desc",
+    "tr-grid-text-cell", ".grid-text-cell", ".grid-text-cell-field",
     ".section .topics-settings", ".topics-settings .topics-setting", ".topics-setting .select .result"
   ].join(",");
 
@@ -1059,6 +1134,9 @@
     const inCkButtonLabel = p.closest && p.closest(".ck-button__label");
     const inCkTooltipText = p.closest && p.closest(".ck-tooltip__text");
     const inInitDesc = p.closest && p.closest(".init-desc");
+    const inGridTextCell = p.closest && p.closest("tr-grid-text-cell, .grid-text-cell, .grid-text-cell-field");
+    const inSelectorFieldResult = p.closest && p.closest(".selector-field-result .func-name");
+    const inSimpleDialogContent = p.closest && p.closest(".simple-dialog-content");
 
     if (!inSelected && !inFake && !inButton && !inCreateTime && !inEventAct && !inEventHeadA && !inAttachLink &&
       !inAnswerInfo && !inAnswerByDay && !inAnswerByTime && !inAnswerCreateTime && !inBdTitle && !inNotificationSummary &&
@@ -1066,7 +1144,7 @@
       !inRepositoryFormInputPlaceholder && !inRepositoryFormInputValue && !inRepositoryFormP && !inEditorLoading &&
       !inSectionTopicsSettings && !inTopicsSettingsTopicsSetting && !inTopicsSettingSelectResult && !inCommentNotifyMembers &&
       !inEditorDraftTip && !inCkPlaceholder && !inCkButtonLabel && !inCkTooltipText && !inInitDesc && !inNotificationContent &&
-      p.closest && p.closest(BLOCK_SELECTOR)) return true;    
+      !inGridTextCell && !inSelectorFieldResult && !inSimpleDialogContent && p.closest && p.closest(BLOCK_SELECTOR)) return true;    
 
     const txt = (node.nodeValue || "").trim();
     if (!p.closest(ALLOW_SELECTOR) && txt.length > 16 &&
@@ -1076,7 +1154,8 @@
       !inTrReadableDatetime && !inTodoCompletedTime && !inPageTitle && !inCollapsedEventsCount && !inRepositoryOverviewP &&
       !inRepositoryFormInputPlaceholder && !inRepositoryFormInputValue && !inRepositoryFormP && !inEditorLoading &&
       !inSectionTopicsSettings && !inTopicsSettingsTopicsSetting && !inTopicsSettingSelectResult && !inCommentNotifyMembers &&
-      !inEditorDraftTip && !inCkPlaceholder && !inCkButtonLabel && !inCkTooltipText && !inInitDesc && !inNotificationContent) return true;
+      !inEditorDraftTip && !inCkPlaceholder && !inCkButtonLabel && !inCkTooltipText && !inInitDesc && !inNotificationContent &&
+      !inGridTextCell && !inSelectorFieldResult && !inSimpleDialogContent) return true;
 
     return false;
   }
@@ -1256,46 +1335,62 @@
     if (mo) return;
     mo = new MutationObserver((muts) => {
       if (!enabled) return;
-      let hasNewElements = false;
+      
+      // Immediate translation for critical changes to reduce flicker
+      const elementsToTranslate = new Set();
+      
       for (const mut of muts) {
         if (mut.type === "childList") {
           mut.addedNodes.forEach((n) => {
-            if (n.nodeType === Node.TEXT_NODE) return;
             if (n.nodeType === Node.ELEMENT_NODE) {
-              hasNewElements = true;
-              // Immediate translation for immediate feedback
-              walkAndTranslate(n);
+              // Immediate translation for critical UI elements
+              const tagName = n.tagName?.toLowerCase();
+              if (tagName && !['script', 'style', 'meta', 'link', 'img'].includes(tagName)) {
+                // Check if it's a critical element that needs immediate translation
+                const isCritical = n.matches && (
+                  n.matches('.toast, .notification, .alert, .message, .status, .tooltip, .popover, .modal') ||
+                  n.matches('[data-placeholder], .placeholder') ||
+                  n.matches('.comment-notify-members, .editor-draft-tip') ||
+                  n.matches('.notifications-group-item-summary, .notifications-group-item-content') ||
+                  n.matches('tr-grid-text-cell, .grid-text-cell, .grid-text-cell-field') ||
+                  n.matches('.selector-field-result, .selector-field-result .func-name')
+                );
+                
+                if (isCritical) {
+                  // Immediate translation for critical elements
+                  walkAndTranslate(n);
+                } else {
+                  elementsToTranslate.add(n);
+                }
+              }
+            } else if (n.nodeType === Node.TEXT_NODE) {
+              // Immediate translation for text nodes with Chinese characters
+              const text = n.nodeValue || "";
+              if (/[\u4e00-\u9fff]/.test(text) && !isSkippableNode(n)) {
+                translateNodeValue(n);
+              }
             }
           });
         } else if (mut.type === "characterData") {
           const n = mut.target;
-          if (!isSkippableNode(n)) {
-            // Immediate translation for any text change
+          const text = n.nodeValue || "";
+          if (/[\u4e00-\u9fff]/.test(text) && !isSkippableNode(n)) {
             translateNodeValue(n);
           }
         } else if (mut.type === "attributes") {
           const el = mut.target;
-          if (shouldSkipElement(el)) continue;
-          if (ATTRS.includes(mut.attributeName)) translateAttribute(el, mut.attributeName);
+          if (!shouldSkipElement(el) && ATTRS.includes(mut.attributeName)) {
+            translateAttribute(el, mut.attributeName);
+          }
         }
       }
       
-      // Delayed re-translation for dynamic content that might load asynchronously
-      if (hasNewElements) {
-        setTimeout(() => {
-          if (!enabled) return;
-          for (const mut of muts) {
-            if (mut.type === "childList") {
-              mut.addedNodes.forEach((n) => {
-                if (n.nodeType === Node.ELEMENT_NODE) {
-                  walkAndTranslate(n);
-                }
-              });
-            }
-          }
-        }, 100);
-      }
+      // Batch translate non-critical elements with debouncing
+      elementsToTranslate.forEach(el => {
+        debounceTranslate(el, 50); // Reduced debounce for faster response
+      });
     });
+    
     mo.observe(document.body, {
       childList: true,
       subtree: true,
@@ -1364,88 +1459,133 @@
   }
 
 
+  // Performance optimization: debounce mechanism
+  const translationCache = new WeakSet();
+  const debounceMap = new Map();
+  
+  function debounceTranslate(element, delay = 100) {
+    const key = element;
+    if (debounceMap.has(key)) {
+      clearTimeout(debounceMap.get(key));
+    }
+    debounceMap.set(key, setTimeout(() => {
+      if (!translationCache.has(element)) {
+        walkAndTranslate(element);
+        translationCache.add(element);
+      }
+      debounceMap.delete(key);
+    }, delay));
+  }
+
+  // First screen priority scan to reduce flicker
+  function firstScreenScan() {
+    if (!enabled) return;
+    
+    // Critical selectors for first screen
+    const firstScreenSelectors = [
+      'nav', 'header', 'aside', 'footer',
+      'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+      'button', 'a', 'label', 'summary',
+      '.menu', '.submenu', '.toolbar', '.breadcrumb',
+      '.tabs', '.tab', '.sidebar', '.filters',
+      '.modal', '.dialog', '.popover', '.toast', '.tooltip',
+      '.badge', '.tag', '.pill', '.label', '.btn',
+      '.kanban', '.list', '.list-item', '.table', '.header-cell',
+      '.toast', '.notification', '.alert', '.message', '.status',
+      '[data-placeholder]', '.placeholder',
+      '.comment-notify-members', '.editor-draft-tip',
+      '.notifications-group-item-summary', '.notifications-group-item-content',
+      'tr-grid-text-cell', '.grid-text-cell', '.grid-text-cell-field',
+      '.selector-field-result', '.selector-field-result .func-name'
+    ];
+    
+    const allSelectors = firstScreenSelectors.join(',');
+    const elements = document.querySelectorAll(allSelectors);
+    
+    elements.forEach(el => {
+      if (el.textContent && el.textContent.trim()) {
+        walkAndTranslate(el);
+      }
+    });
+  }
+
   function init() {
     loadState(() => {
-      if (enabled) { translatePage(); startObserver(); }
+      if (enabled) { 
+        translatePage(); 
+        startObserver(); 
+        // First screen scan to reduce flicker
+        firstScreenScan();
+      }
       injectBadge();
       initHotkeys();
     });
-    setInterval(translateTitleTick, 500);
+    setInterval(translateTitleTick, 1000); // Reduced frequency
     
-    // Optimized combined periodic check (reduced from multiple timers to one)
+    // Optimized periodic check with better performance
     setInterval(() => {
       if (!enabled) return;
       
-      // Check for status messages and notifications (high priority)
-      const statusSelectors = [
+      // Only scan critical elements, not the entire page
+      const criticalSelectors = [
         '.toast', '.notification', '.alert', '.message', '.status',
         '.ck-tooltip', '.tooltip', '.popover', '.modal',
-        '[data-placeholder]', '.placeholder'
+        '[data-placeholder]', '.placeholder',
+        '.comment-notify-members', '.editor-draft-tip',
+        '.notifications-group-item-summary', '.notifications-group-item-content',
+        'tr-grid-text-cell', '.grid-text-cell', '.grid-text-cell-field',
+        '.selector-field-result', '.selector-field-result .func-name'
       ];
       
-      statusSelectors.forEach(selector => {
-        const elements = document.querySelectorAll(selector);
-        elements.forEach(el => {
-          if (el.textContent && el.textContent.trim()) {
-            walkAndTranslate(el);
-          }
-        });
+      // Batch query all selectors at once
+      const allSelectors = criticalSelectors.join(',');
+      const elements = document.querySelectorAll(allSelectors);
+      
+      // Process only elements that haven't been translated recently
+      elements.forEach(el => {
+        if (el.textContent && el.textContent.trim() && !translationCache.has(el)) {
+          debounceTranslate(el, 50); // Short debounce for critical elements
+        }
       });
       
-      // Check for dynamic content selectors
-      const dynamicSelectors = [
-        'tr-readable-datetime', '.todo-completed-time', '.answer-info',
-        '.notifications-group-item-summary', '.notifications-group-item-content', '.bd-title', '.page-title',
-        '.collapsed-events-count', '.event-action', '.section .topics-settings',
-        '.topics-settings .topics-setting', '.topics-setting .select .result',
-        '.comment-notify-members', '.editor-draft-tip'
+      // Only scan for specific Chinese text patterns, not all text nodes
+      const specificTexts = [
+        "草稿已自动保存", "正在保存...", "输入评论内容", 
+        "没有通知任何人员。", "回复："
       ];
       
-      dynamicSelectors.forEach(selector => {
-        const elements = document.querySelectorAll(selector);
-        elements.forEach(el => {
-          if (el.textContent && el.textContent.trim()) {
-            walkAndTranslate(el);
-          }
-        });
-      });
-      
-      // Check for Chinese text that needs immediate translation
-      const walker = document.createTreeWalker(
-        document.body,
-        NodeFilter.SHOW_TEXT,
-        {
-          acceptNode: function(node) {
-            if (isSkippableNode(node)) return NodeFilter.FILTER_REJECT;
-            const text = (node.nodeValue || "").trim();
-            // Look for critical status messages or any Chinese text in dictionary
-            if (text && (
-              text === "草稿已自动保存" ||
-              text === "正在保存..." ||
-              text === "输入评论内容" ||
-              text === "没有通知任何人员。" ||
-              Object.prototype.hasOwnProperty.call(DICT, text)
-            )) {
-              return NodeFilter.FILTER_ACCEPT;
-            }
-            return NodeFilter.FILTER_REJECT;
+      // Use a more targeted approach instead of TreeWalker
+      specificTexts.forEach(text => {
+        const xpath = `//text()[normalize-space()='${text}']`;
+        const result = document.evaluate(xpath, document.body, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
+        for (let i = 0; i < result.snapshotLength; i++) {
+          const node = result.snapshotItem(i);
+          if (node && !isSkippableNode(node)) {
+            translateNodeValue(node);
           }
         }
-      );
+      });
       
-      const textNodes = [];
-      let node;
-      while (node = walker.nextNode()) {
-        textNodes.push(node);
-      }
-      
-      textNodes.forEach(translateNodeValue);
-    }, 500); // Reduced from multiple timers to single 500ms timer
+    }, 1000); // Reduced from 500ms to 1000ms for better performance
   }
 
+  // Multiple initialization points to reduce flicker
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init);
+    document.addEventListener("DOMContentLoaded", () => {
+      init();
+      // Additional scan after DOM is ready
+      setTimeout(firstScreenScan, 0);
+    });
   } else {
     init();
+    // Additional scan if DOM is already ready
+    setTimeout(firstScreenScan, 0);
+  }
+  
+  // Additional scan on first paint to catch any remaining elements
+  if (document.readyState === "complete") {
+    requestAnimationFrame(() => {
+      firstScreenScan();
+    });
   }
 })();

@@ -1,24 +1,42 @@
 
-# Tower.im UI Auto-Translate (EN) — v0.6.3
+# Tower.im UI Auto-Translate (EN) — v0.6.9
 
-**What's new in v0.6.3**
-- Added regex pattern for "回复：" text translation (Replied:)
-- Enhanced notification content translation support
-- Fixed translation logic for notification group items
-- Improved dynamic content detection for reply messages
+**What's new in v0.6.9**
+- Add more translations for Reports/Knowledge and dialogs (e.g., global tag edit confirmation)
+- Translate selector field function names: `.selector-field-result .func-name`
+- Improve activity parsing (trash items, reply patterns)
 
-**Previous features (v0.6.2)**
-- Added support for CKEditor UI elements (placeholders, tooltips, button labels)
-- Enhanced dynamic text detection for status messages and notifications
-- Added translation for visitor permission descriptions and editor help text
-- Improved performance by consolidating multiple timers into optimized periodic checks
-- Added support for text split by HTML tags (like `<br>`)
+**What's new in v0.6.8**
+- Add translation coverage for selector field result and function name areas
+- Minor fixes to activity item handling
+
+**What's new in v0.6.7**
+- Ensure deletion-related activity text is translated; include `.trash-item` in activity scope
+
+**What's new in v0.6.6**
+- Support full Chinese datetime format: `YYYY年MM月DD日 HH:MM`
+
+**What's new in v0.6.5**
+- Fix translation in grid date cells and ensure display-only cells are handled safely
+
+**What's new in v0.6.4**
+- Performance Optimization: Significantly reduced list page lag
+  - Reduced timer frequency from 500ms to 1000ms
+  - Added debounce mechanism to prevent duplicate translations
+  - Optimized scanning to only scan critical elements where possible
+  - Replaced full-page text node traversal with targeted queries
+  - Batch processing for MutationObserver events
+- Smart Filtering: Only process text nodes containing Chinese characters
+- Caching System: Avoid re-translating already processed elements
+
+**Earlier changes**
+- CKEditor UI elements (placeholders, tooltips, button labels)
+- Dynamic text detection for status messages and notifications
+- Visitor permission descriptions and editor help text
+- Support for text split by HTML tags (like `<br>`)
 - Fixed date format translation for task completion time changes
-
-**Previous features (v0.6.1)**
-- Translates **placeholder**, **title**, **aria-label/aria-placeholder**, **data-placeholder/data-title** attributes.
-- Observes attribute changes so dynamic placeholders also get translated.
-- Keeps default **STRICT**; auto **RELAXED** within activity/log feeds; regex captures for dynamic sentences remain.
+- Attribute translation: placeholder, title, aria-label/aria-placeholder, data-placeholder/data-title
+- Default STRICT; auto RELAXED in activity/log feeds; regex captures for dynamic sentences
 
 **Install**
 1) Download the ZIP and extract.
@@ -26,6 +44,6 @@
 3) Open `tower.im`.
 
 **Notes**
-- Attribute translation uses **STRICT first**, then **RELAXED fallback** (placeholders通常是短 UI 文案).  
-- 若个别 placeholder 不应翻译，可给该元素或父容器加 `.notranslate` 或 `data-no-translate`。
-- 欢迎把未命中的 placeholder 文案/截图给我，我会补充到词典或正则规则里。
+- Attribute translation uses STRICT first, then RELAXED fallback.
+- If any element should not be translated, add `.notranslate` or `data-no-translate` to it or its container.
+- If you find untranslated phrases, please share; we’ll extend the dictionary or regex rules.
