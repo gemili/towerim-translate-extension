@@ -1,5 +1,10 @@
 
-# Tower.im UI Auto-Translate (EN) — v0.6.9
+# Tower.im UI Auto-Translate (EN) — v0.6.10
+
+**What's new in v0.6.10**
+- Add translations for project template workflows and assistant assignee labels
+- Translate aggressive project deletion confirmation dialog
+- Adjust floating badge placement to avoid overlapping UI controls
 
 **What's new in v0.6.9**
 - Add more translations for Reports/Knowledge and dialogs (e.g., global tag edit confirmation)

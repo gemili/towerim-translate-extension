@@ -1,4 +1,4 @@
-// Tower.im UI Auto-Translate (EN) - v0.6.9
+// Tower.im UI Auto-Translate (EN) - v0.6.10
 // NEW: translate placeholders/titles/aria-* attributes; observe attribute changes.
 // Keeps STRICT by default; auto-RELAXED in activity feeds. Regex-capture rules for dynamic sentences.
 
