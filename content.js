@@ -18,6 +18,7 @@
     "返回最新": "Back to latest",
     "项目": "Projects",
     "任务": "Tasks",
+    "任务标题": "Task Title",
     "子任务": "subtasks",
     "清单": "Lists",
     "看板": "Board",
@@ -525,6 +526,7 @@
     "把这个项目复制为项目模板，将只保留此项目里未完成的任务清单和任务，不会保留评论。": "Copy this project as a template. Only incomplete lists and tasks will be kept. Comments won't be kept.",
     "复制这个项目": "Copy this project",
     "删除项目": "Delete project",
+    "该项目所有的内容都将被删除，确认删除该项目吗？":"All contents of this project will be deleted. Are you sure you want to delete this project?",
     "项目删除后，所有的内容也将被立刻删除，请谨慎操作。": "Deleting the project will immediately remove all its contents. Proceed with caution.",
     "了解风险，删除这个项目": "I understand the risks. Delete this project",
     "输入标题，回车创建，ESC取消": "Enter title, press Enter to create, ESC to cancel",
@@ -910,6 +912,18 @@
     "添加里程碑": "Add milestone",
     "点击了解更多": "Click to view more",
     "编辑全局标签后，所有项目中使用的该全局标签将会被同步修改，确认编辑？": "After editing the global tag, all projects using the global tag will be synchronized to modify, confirm edit?",
+
+    "第二受让人": "Assistant",
+    "创建项目模板": "Create project template",
+    "还没有项目模板": "No project templates yet",
+    "保存模板": "Save template",
+    "生成新项目": "Generate new project",
+    "计划": "Plan",
+    "在做": "In progress",
+    "完成": "Completed",
+    "模版可用成员": "Template available members",
+    "删除模板": "Delete template",
+    "模板删除后，将不能再恢复，请确认是否要删除？": "The template will no longer be recoverable after deletion. Please confirm whether to delete?",
   };
 
   const REGEX_RULES = [
@@ -1416,7 +1430,7 @@
     Object.assign(badge.style, {
       position: "fixed",
       bottom: "10px",
-      right: "10px",
+      right: "70px",
       zIndex: 999999,
       background: "rgba(0,0,0,0.6)",
       color: "#fff",
